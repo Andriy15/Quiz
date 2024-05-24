@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useFetchQuizById } from '../lib/data'
 import { BackBtn } from '../ui/buttons'
 import clsx from 'clsx'
@@ -25,11 +25,13 @@ export const QuizPage = ({ id }: Props) => {
 	const [isTimerCompleted, setIsTimerCompleted] = useState(false)
 	const [time, setTime] = useState<number>(0)
 	const [isReviewing, setIsReviewing] = useState(false)
+	const initialTime = useRef<number>(0)
 
 	useEffect(() => {
 		if (quiz) {
 			setSelectedAnswers(new Array(quiz.questions.length).fill(-1))
 			setTime(quiz.time * 1000)
+			initialTime.current = Date.now() + quiz.time * 1000
 		}
 	}, [quiz])
 
@@ -44,6 +46,14 @@ export const QuizPage = ({ id }: Props) => {
 			)
 		}
 	}
+
+	const countdown = quiz && time && (
+		<Countdown
+			key={initialTime.current}
+			date={initialTime.current}
+			renderer={renderer}
+		/>
+	)
 
 	if (loading) {
 		return <div>Loading...</div>
@@ -142,7 +152,7 @@ export const QuizPage = ({ id }: Props) => {
 	return (
 		<div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md">
 			<h1 className="text-2xl font-bold mb-4">{quiz.title}</h1>
-			{quiz && time && <Countdown date={Date.now() + time} renderer={renderer} />}
+			{countdown}
 			<div className="mb-4">
 				<h2 className="text-lg font-semibold mb-2">
 					Question {currentQuestion + 1} of {quiz.questions.length}:
