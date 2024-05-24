@@ -1,13 +1,13 @@
 import { editQuiz } from '../lib/actions'
-import { useFormik } from 'formik';
+import { useFormik } from 'formik'
 import { Fields, FORM_LABELS, Quiz } from '../models'
-import { useNavigate } from 'react-router-dom';
-import { useFetchQuizzes } from '../lib/data';
+import { useNavigate } from 'react-router-dom'
+import { useFetchQuizzes } from '../lib/data'
 import { FormSchema } from '../schema/schema'
 
 export const Form = ({ quiz }: { quiz: Quiz }) => {
-	const { quizzes } = useFetchQuizzes();
-	const navigate = useNavigate();
+	const { quizzes } = useFetchQuizzes()
+	const navigate = useNavigate()
 
 	const formik = useFormik({
 		initialValues: {
@@ -18,9 +18,9 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 		},
 		validationSchema: FormSchema,
 		onSubmit: values => {
-			editQuiz(quiz.id, { ...values, id: quiz.id }, quizzes, navigate);
+			editQuiz(quiz.id, { ...values, id: quiz.id }, quizzes, navigate)
 		},
-	});
+	})
 
 	const handleAddQuestion = () => {
 		formik.setFieldValue('questions', [
@@ -34,35 +34,37 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 					},
 				],
 			},
-		]);
-	};
+		])
+	}
 
 	const handleDeleteQuestion = (questionIndex: number) => {
-		const newQuestions = [...formik.values.questions];
-		newQuestions.splice(questionIndex, 1);
-		formik.setFieldValue('questions', newQuestions);
-	};
+		const newQuestions = [...formik.values.questions]
+		newQuestions.splice(questionIndex, 1)
+		formik.setFieldValue('questions', newQuestions)
+	}
 
 	const handleAddAnswer = (questionIndex: number) => {
-		const newQuestions = [...formik.values.questions];
+		const newQuestions = [...formik.values.questions]
 		newQuestions[questionIndex].answers.push({
 			answer: '',
 			isCorrect: false,
-		});
-		formik.setFieldValue('questions', newQuestions);
-	};
+		})
+		formik.setFieldValue('questions', newQuestions)
+	}
 
 	const handleDeleteAnswer = (questionIndex: number, answerIndex: number) => {
-		const newQuestions = [...formik.values.questions];
-		newQuestions[questionIndex].answers.splice(answerIndex, 1);
-		formik.setFieldValue('questions', newQuestions);
-	};
+		const newQuestions = [...formik.values.questions]
+		newQuestions[questionIndex].answers.splice(answerIndex, 1)
+		formik.setFieldValue('questions', newQuestions)
+	}
 
 	return (
 		<div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md mt-10">
 			<form onSubmit={formik.handleSubmit} className="space-y-6">
 				<div>
-					<label htmlFor="title" className="block text-sm font-medium text-gray-700">{FORM_LABELS[Fields.title]}</label>
+					<label htmlFor="title" className="block text-sm font-medium text-gray-700">
+						{FORM_LABELS[Fields.title]}
+					</label>
 					<input
 						className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 						id="title"
@@ -75,7 +77,9 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 					{formik.errors.title && <div className="text-red-500">{formik.errors.title}</div>}
 				</div>
 				<div>
-					<label htmlFor="description" className="block text-sm font-medium text-gray-700">{FORM_LABELS[Fields.description]}</label>
+					<label htmlFor="description" className="block text-sm font-medium text-gray-700">
+						{FORM_LABELS[Fields.description]}
+					</label>
 					<input
 						className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 						id="description"
@@ -85,10 +89,14 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 						value={formik.values.description}
 						placeholder="Description"
 					/>
-					{formik.errors.description && <div className="text-red-500">{formik.errors.description}</div>}
+					{formik.errors.description && (
+						<div className="text-red-500">{formik.errors.description}</div>
+					)}
 				</div>
 				<div>
-					<label htmlFor="time" className="block text-sm font-medium text-gray-700">{FORM_LABELS[Fields.time]}</label>
+					<label htmlFor="time" className="block text-sm font-medium text-gray-700">
+						{FORM_LABELS[Fields.time]}
+					</label>
 					<input
 						className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 						id="time"
@@ -102,7 +110,12 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 				</div>
 				{formik.values.questions.map((question, questionIndex) => (
 					<div key={questionIndex} className="space-y-4">
-						<label htmlFor={`questions.${questionIndex}.question`} className="block text-sm font-medium text-gray-700">{FORM_LABELS[Fields.question]} {questionIndex + 1}</label>
+						<label
+							htmlFor={`questions.${questionIndex}.question`}
+							className="block text-sm font-medium text-gray-700"
+						>
+							{FORM_LABELS[Fields.question]} {questionIndex + 1}
+						</label>
 						<input
 							className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 							id={`questions.${questionIndex}.question`}
@@ -171,5 +184,5 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 				</button>
 			</form>
 		</div>
-	);
-};
+	)
+}

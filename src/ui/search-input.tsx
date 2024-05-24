@@ -8,7 +8,9 @@ interface Props {
 export const SearchInput = ({ quiz }: Props) => {
 	const [searchQuery, setSearchQuery] = useState('')
 
-	const filteredQuizzes = quiz.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+	const filteredQuizzes = quiz.filter(item =>
+		item.title.toLowerCase().includes(searchQuery.toLowerCase()),
+	)
 
 	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchQuery(event.target.value)
@@ -28,10 +30,7 @@ export const SearchInput = ({ quiz }: Props) => {
 					{filteredQuizzes.length > 0 ? (
 						<ul className="p-4 bg-white rounded shadow">
 							{filteredQuizzes.map((item, i) => (
-								<li
-									key={i}
-									className="text-lg font-bold"
-								>
+								<li key={i} className="text-lg font-bold">
 									{item.title}
 								</li>
 							))}

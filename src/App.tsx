@@ -5,14 +5,13 @@ import { Main } from './pages/Main'
 import { QuizPage } from './pages/QuizPage'
 import { EditQuiz } from './pages/EditQuizPage'
 
-
 export const App = () => {
 	return (
 		<Routes>
-			<Route path='/create' element={<CreateQuiz />} />
-			<Route path='/' element={<Main />} />
-			<Route path='/quiz/:id' element={<QuizWrapper />} />
-			<Route path='/edit/:id' element={<EditQuizWrapper />} />
+			<Route path="/create" element={<CreateQuiz />} />
+			<Route path="/" element={<Main />} />
+			<Route path="/quiz/:id" element={<QuizWrapper />} />
+			<Route path="/edit/:id" element={<EditQuizWrapper />} />
 		</Routes>
 	)
 }

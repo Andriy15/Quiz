@@ -83,7 +83,9 @@ export const Form = () => {
 					{formik.errors.title && <div className="text-red-500">{formik.errors.title}</div>}
 				</div>
 				<div>
-					<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.description]}</label>
+					<label className="block text-gray-700 font-bold mb-2">
+						{FORM_LABELS[Fields.description]}
+					</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 						type="text"
@@ -91,7 +93,9 @@ export const Form = () => {
 						value={formik.values.description}
 						placeholder="Description"
 					/>
-					{formik.errors.description && <div className="text-red-500">{formik.errors.description}</div>}
+					{formik.errors.description && (
+						<div className="text-red-500">{formik.errors.description}</div>
+					)}
 				</div>
 				<div>
 					<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.time]}</label>
@@ -106,7 +110,9 @@ export const Form = () => {
 				</div>
 				{formik.values.questions.map((question, index) => (
 					<div key={index} className="space-y-2">
-						<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.question]}</label>
+						<label className="block text-gray-700 font-bold mb-2">
+							{FORM_LABELS[Fields.question]}
+						</label>
 						<input
 							className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 							type="text"

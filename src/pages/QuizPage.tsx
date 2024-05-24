@@ -5,14 +5,14 @@ import clsx from 'clsx'
 import Countdown from 'react-countdown'
 
 interface Props {
-	id: number;
+	id: number
 }
 
 interface CountdownRenderProps {
-	hours: number;
-	minutes: number;
-	seconds: number;
-	completed: boolean;
+	hours: number
+	minutes: number
+	seconds: number
+	completed: boolean
 }
 
 export const QuizPage = ({ id }: Props) => {
@@ -37,7 +37,11 @@ export const QuizPage = ({ id }: Props) => {
 		if (completed) {
 			setIsTimerCompleted(true)
 		} else {
-			return <p>Time remaining: {hours} hours {minutes} minutes {seconds} seconds</p>
+			return (
+				<p>
+					Time remaining: {hours} hours {minutes} minutes {seconds} seconds
+				</p>
+			)
 		}
 	}
 
@@ -80,11 +84,16 @@ export const QuizPage = ({ id }: Props) => {
 		return (
 			<div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md">
 				<h1
-					className={clsx(isTimerCompleted ? 'text-red-500' : 'text-gray-500', 'text-2xl font-bold mb-4')}
+					className={clsx(
+						isTimerCompleted ? 'text-red-500' : 'text-gray-500',
+						'text-2xl font-bold mb-4',
+					)}
 				>
 					{isTimerCompleted ? 'Time is up!' : 'Quiz Completed!'}
 				</h1>
-				<p className="mb-4">You answered {score} out of {quiz.questions.length} questions correctly.</p>
+				<p className="mb-4">
+					You answered {score} out of {quiz.questions.length} questions correctly.
+				</p>
 				<p className="mb-4">Click the button below to go back to the quizzes page.</p>
 				<BackBtn />
 				<button
@@ -109,8 +118,12 @@ export const QuizPage = ({ id }: Props) => {
 					<div key={index} className="mb-4">
 						<h2 className="text-lg font-semibold mb-2">Question {index + 1}:</h2>
 						<p className="mb-4">{question.question}</p>
-						<p className="mb-4">Your answer: {question.answers[selectedAnswers[index]]?.answer || 'None'}</p>
-						<p className="mb-4">Correct answer: {question.answers.find(answer => answer.isCorrect)?.answer || ''}</p>
+						<p className="mb-4">
+							Your answer: {question.answers[selectedAnswers[index]]?.answer || 'None'}
+						</p>
+						<p className="mb-4">
+							Correct answer: {question.answers.find(answer => answer.isCorrect)?.answer || ''}
+						</p>
 					</div>
 				))}
 				<button
@@ -129,14 +142,11 @@ export const QuizPage = ({ id }: Props) => {
 	return (
 		<div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md">
 			<h1 className="text-2xl font-bold mb-4">{quiz.title}</h1>
-			{quiz && time && (
-				<Countdown
-					date={Date.now() + time}
-					renderer={renderer}
-				/>
-			)}
+			{quiz && time && <Countdown date={Date.now() + time} renderer={renderer} />}
 			<div className="mb-4">
-				<h2 className="text-lg font-semibold mb-2">Question {currentQuestion + 1} of {quiz.questions.length}:</h2>
+				<h2 className="text-lg font-semibold mb-2">
+					Question {currentQuestion + 1} of {quiz.questions.length}:
+				</h2>
 				<p className="mb-4">{quiz.questions[currentQuestion].question}</p>
 				<div className="space-y-2">
 					{quiz.questions[currentQuestion].answers.map((answer, index) => (
@@ -163,17 +173,11 @@ export const QuizPage = ({ id }: Props) => {
 					Previous
 				</button>
 				{currentQuestion === quiz.questions.length - 1 ? (
-					<button
-						onClick={handleNextQuestion}
-						className="px-4 py-2 bg-blue-500 text-white rounded"
-					>
+					<button onClick={handleNextQuestion} className="px-4 py-2 bg-blue-500 text-white rounded">
 						Submit
 					</button>
 				) : (
-					<button
-						onClick={handleNextQuestion}
-						className="px-4 py-2 bg-blue-500 text-white rounded"
-					>
+					<button onClick={handleNextQuestion} className="px-4 py-2 bg-blue-500 text-white rounded">
 						Next
 					</button>
 				)}

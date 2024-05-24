@@ -29,10 +29,7 @@ export const Main = () => {
 			) : (
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
 					{quizzes.map((quiz: Quiz, i) => (
-						<div
-							key={i}
-							className='bg-white rounded-lg shadow-md p-6 transition transform'
-						>
+						<div key={i} className="bg-white rounded-lg shadow-md p-6 transition transform">
 							<div className="font-bold text-lg mb-2">{quiz.title}</div>
 							<p className="text-gray-700 mb-4">{quiz.description}</p>
 							<div className="flex justify-between items-center">

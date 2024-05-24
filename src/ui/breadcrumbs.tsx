@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 interface Breadcrumb {
-	label: string;
-	href: string;
-	active?: boolean;
+	label: string
+	href: string
+	active?: boolean
 }
 
-export const Breadcrumbs = ({ breadcrumbs }: {breadcrumbs: Breadcrumb[]}) => {
+export const Breadcrumbs = ({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) => {
 	return (
-		<nav aria-label='Breadcrumb' className='mb-6 ml-10 mt-5 block'>
-			<ol className='flex text-xl md:text-2xl'>
+		<nav aria-label="Breadcrumb" className="mb-6 ml-10 mt-5 block">
+			<ol className="flex text-xl md:text-2xl">
 				{breadcrumbs.map((breadcrumb, index) => (
 					<li
 						key={breadcrumb.href}
@@ -22,5 +22,5 @@ export const Breadcrumbs = ({ breadcrumbs }: {breadcrumbs: Breadcrumb[]}) => {
 				))}
 			</ol>
 		</nav>
-	);
-};
+	)
+}

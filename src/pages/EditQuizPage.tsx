@@ -8,7 +8,7 @@ interface Props {
 	id: number
 }
 
-export const EditQuiz = ({id}: Props) => {
+export const EditQuiz = ({ id }: Props) => {
 	const { quiz, loading, error } = useFetchQuizById(id)
 
 	if (loading) {

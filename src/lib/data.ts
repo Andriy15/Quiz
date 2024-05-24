@@ -38,7 +38,6 @@ export const useFetchQuizzes = () => {
 		fetchQuizData()
 	}, [])
 
-
 	return { quizzes, loading, error }
 }
 
@@ -68,7 +67,6 @@ export const useFetchQuizById = (id: number) => {
 	useEffect(() => {
 		fetchQuizData()
 	}, [])
-
 
 	return { quiz, loading, error }
 }
