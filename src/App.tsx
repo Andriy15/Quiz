@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Routes, Route, useParams } from 'react-router-dom'
+import { CreateQuiz } from './pages/CreateQuizPage'
+import { Main } from './pages/Main'
+import { QuizPage } from './pages/QuizPage'
+import { EditQuiz } from './pages/EditQuizPage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export const App = () => {
+	return (
+		<Routes>
+			<Route path='/create' element={<CreateQuiz />} />
+			<Route path='/' element={<Main />} />
+			<Route path='/quiz/:id' element={<QuizWrapper />} />
+			<Route path='/edit/:id' element={<EditQuizWrapper />} />
+		</Routes>
+	)
 }
 
-export default App;
+const QuizWrapper = () => {
+	const { id } = useParams()
+	return <QuizPage id={Number(id)} />
+}
+
+const EditQuizWrapper = () => {
+	const { id } = useParams()
+	return <EditQuiz id={Number(id)} />
+}
