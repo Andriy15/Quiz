@@ -48,11 +48,7 @@ export const QuizPage = ({ id }: Props) => {
 	}
 
 	const countdown = quiz && time && (
-		<Countdown
-			key={initialTime.current}
-			date={initialTime.current}
-			renderer={renderer}
-		/>
+		<Countdown key={initialTime.current} date={initialTime.current} renderer={renderer} />
 	)
 
 	if (loading) {

@@ -2,7 +2,6 @@ import { CreateQuizBtn, StartQuizBtn, EditQuizBtn, DeleteQuizBtn } from '../ui/b
 import { useFetchQuizzes } from '../lib/data'
 import { Quiz } from '../models'
 import { SearchInput } from '../ui/search-input'
-import { useState } from 'react'
 
 export const Main = () => {
 	const { quizzes, loading, error } = useFetchQuizzes()

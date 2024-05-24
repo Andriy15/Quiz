@@ -76,7 +76,7 @@ export const Form = () => {
 					<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.title]}</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-						name='title'
+						name="title"
 						type="text"
 						onChange={formik.handleChange}
 						value={formik.values.title}
@@ -90,7 +90,7 @@ export const Form = () => {
 					</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-						name='description'
+						name="description"
 						type="text"
 						onChange={formik.handleChange}
 						value={formik.values.description}
@@ -104,7 +104,7 @@ export const Form = () => {
 					<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.time]}</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-						name='time'
+						name="time"
 						type="number"
 						onChange={formik.handleChange}
 						value={formik.values.time}

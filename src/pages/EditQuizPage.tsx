@@ -1,8 +1,6 @@
 import { Breadcrumbs } from '../ui/breadcrumbs'
 import { Form } from '../ui/edit-quiz-form'
 import { useFetchQuizById } from '../lib/data'
-import { Quiz } from '../models'
-import { useState } from 'react'
 
 interface Props {
 	id: number

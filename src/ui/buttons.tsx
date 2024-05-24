@@ -12,7 +12,7 @@ interface DeleteProps {
 }
 
 interface BackBtnProps {
-	children: React.ReactNode;
+	children: React.ReactNode
 }
 
 export const CreateQuizBtn = () => {
