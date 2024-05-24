@@ -105,7 +105,7 @@ export const QuizPage = ({ id }: Props) => {
 					You answered {score} out of {quiz.questions.length} questions correctly.
 				</p>
 				<p className="mb-4">Click the button below to go back to the quizzes page.</p>
-				<BackBtn />
+				<BackBtn>Back</BackBtn>
 				<button
 					className="inline-block px-6 py-2 ml-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-600 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
 					onClick={() => {

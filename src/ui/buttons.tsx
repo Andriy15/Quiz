@@ -11,6 +11,10 @@ interface DeleteProps {
 	quizzes: Quiz[]
 }
 
+interface BackBtnProps {
+	children: React.ReactNode;
+}
+
 export const CreateQuizBtn = () => {
 	return (
 		<Link to="/create" className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
@@ -30,13 +34,13 @@ export const StartQuizBtn = ({ id }: Props) => {
 	)
 }
 
-export const BackBtn = () => {
+export const BackBtn = ({ children }: BackBtnProps) => {
 	return (
 		<Link
 			to="/"
 			className="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-600 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
 		>
-			Back
+			{children}
 		</Link>
 	)
 }

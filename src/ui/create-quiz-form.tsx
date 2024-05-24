@@ -4,6 +4,7 @@ import { useFetchQuizzes } from '../lib/data'
 import { useNavigate } from 'react-router-dom'
 import { Fields, FORM_LABELS } from '../models'
 import { FormSchema } from '../schema/schema'
+import { BackBtn } from './buttons'
 
 export const Form = () => {
 	const { quizzes } = useFetchQuizzes()
@@ -75,6 +76,7 @@ export const Form = () => {
 					<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.title]}</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+						name='title'
 						type="text"
 						onChange={formik.handleChange}
 						value={formik.values.title}
@@ -88,6 +90,7 @@ export const Form = () => {
 					</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+						name='description'
 						type="text"
 						onChange={formik.handleChange}
 						value={formik.values.description}
@@ -101,6 +104,7 @@ export const Form = () => {
 					<label className="block text-gray-700 font-bold mb-2">{FORM_LABELS[Fields.time]}</label>
 					<input
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+						name='time'
 						type="number"
 						onChange={formik.handleChange}
 						value={formik.values.time}
@@ -114,6 +118,7 @@ export const Form = () => {
 							{FORM_LABELS[Fields.question]}
 						</label>
 						<input
+							name={`questions.${index}.question`}
 							className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 							type="text"
 							onChange={formik.handleChange}
@@ -124,6 +129,7 @@ export const Form = () => {
 							<div key={answerIndex} className="flex items-center space-x-2">
 								<label className="sr-only">Answer</label>
 								<input
+									name={`questions.${index}.answers.${answerIndex}.answer`}
 									className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
 									type="text"
 									onChange={formik.handleChange}
@@ -131,6 +137,7 @@ export const Form = () => {
 									placeholder="Answer"
 								/>
 								<input
+									name={`questions.${index}.answers.${answerIndex}.isCorrect`}
 									className="h-4 w-4"
 									type="checkbox"
 									onChange={formik.handleChange}
@@ -174,6 +181,7 @@ export const Form = () => {
 				>
 					Submit
 				</button>
+				<BackBtn>Cancel</BackBtn>
 			</form>
 		</div>
 	)

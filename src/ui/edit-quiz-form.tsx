@@ -4,6 +4,7 @@ import { Fields, FORM_LABELS, Quiz } from '../models'
 import { useNavigate } from 'react-router-dom'
 import { useFetchQuizzes } from '../lib/data'
 import { FormSchema } from '../schema/schema'
+import { BackBtn } from './buttons'
 
 export const Form = ({ quiz }: { quiz: Quiz }) => {
 	const { quizzes } = useFetchQuizzes()
@@ -182,6 +183,7 @@ export const Form = ({ quiz }: { quiz: Quiz }) => {
 				>
 					Edit Quiz
 				</button>
+				<BackBtn>Cancel</BackBtn>
 			</form>
 		</div>
 	)
